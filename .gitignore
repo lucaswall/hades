@@ -1,0 +1,5 @@
+server.log
+.DS_Store
+hades-*.tar.gz
+vendor
+.private

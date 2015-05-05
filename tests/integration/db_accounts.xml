@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<dataset>
+    <accounts uid="1" mail="wall.lucas@gmail.com" pass="953:a15776e27d8b4932e60f1dc097696ba" />
+    <pushdevices gameid="test_game" userid="kthulhu" devicetoken="token99" ostype="0" />
+    <games gameid="test_game" server_key="server_key" client_key="client_key" google_api_key="" apple_apn_cert_file="" />
+</dataset>

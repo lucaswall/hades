@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd" logicalFilePath="does-not-matter">
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="1">
+		<createTable tableName="accounts">
+			<column autoIncrement="true" name="uid" type="INT">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="mail" type="VARCHAR(200)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="pass" type="VARCHAR(100)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="2">
+		<createTable tableName="games">
+			<column name="gameid" type="VARCHAR(100)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="google_api_key" type="VARCHAR(200)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="server_key" type="VARCHAR(200)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="client_key" type="VARCHAR(200)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="3">
+		<addPrimaryKey columnNames="gameid" constraintName="PRIMARY" tableName="games"/>
+	</changeSet>
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="3.1">
+		<insert tableName="games">
+			<column name="gameid" value="net.qb9.notifsample" />
+			<column name="google_api_key" value="AIzaSyAb30xqSRECQQQ9uciqXcUTGUHivJd16is" />
+			<column name="server_key" value="5e4f00e9e73a2657dc4a5ea36d91786d587c326e" />
+			<column name="client_key" value="9ea350e5a4218bc0879c82dd4cfcb6a04da19ec5" />
+		</insert>
+		<rollback>
+			<delete tableName="games">
+				<where>gameid = 'net.qb9.notifsample'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="4">
+		<createTable tableName="pushdevices">
+			<column name="gameid" type="VARCHAR(100)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="userid" type="VARCHAR(100)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="devicetoken" type="VARCHAR(200)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ostype" type="INT">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="5">
+		<addPrimaryKey columnNames="gameid, userid, devicetoken" constraintName="PRIMARY" tableName="pushdevices"/>
+	</changeSet>
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="6">
+		<createTable tableName="sessions">
+			<column name="uid" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="sessionid" type="VARCHAR(100)">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="lastused" type="TIMESTAMP">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="7">
+		<addPrimaryKey columnNames="uid, sessionid" constraintName="PRIMARY" tableName="sessions"/>
+	</changeSet>
+
+	<changeSet logicalFilePath="db.changelog.xml" author="kthulhu" id="8">
+		<addColumn tableName="games">
+			<column name="apple_apn_cert_file" type="VARCHAR(200)" >
+				<constraints nullable="false"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+</databaseChangeLog>
