@@ -7,4 +7,4 @@ php:
   - nightly
 install: ./composer install
 script: scripts/run_full_tests.sh
-before_script: mysql -e 'create database hades; grant all on hades.* to hades@localhost identified by "hades";' -uroot
+before_script: mysql -e 'create database hades_test; grant all on hades_test.* to hades@localhost identified by "hades";' -uroot
