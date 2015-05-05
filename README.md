@@ -1,6 +1,8 @@
 
 # Hades Mobile Backend
 
+[![Build Status](https://travis-ci.org/lucaswall/hades.svg?branch=develop)](https://travis-ci.org/lucaswall/hades)
+
 A general purpose mobile backend server written in PHP which includes:
 
 * Push notifications on iOS/Android.
