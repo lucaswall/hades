@@ -12,6 +12,7 @@ Install on web server:
 * vendor
 * model
 * controller
+* config
 * public_html
 
 Directory "public_html" should be htdoc root.
